@@ -38,6 +38,21 @@ def save_tasks(self):
         for idx, task in enumerate(self.tasks, start=1):
             status = "✓" if task.completed else "✗"
             print(f"{idx}. [{status}] {task.description}")
+    def complete_task(self, index):
+        if 0 <= index < len(self.tasks):
+            self.tasks[index].completed = True
+            self.save_tasks()
+            print("✔️ Task marked as completed.")
+        else:
+            print("Invalid task number.")
+
+    def delete_task(self, index):
+        if 0 <= index < len(self.tasks):
+            del self.tasks[index]
+            self.save_tasks()
+            print("🗑️ Task deleted.")
+        else:
+            print("Invalid task number.")
 
 def menu():
     manager = TaskManager()
