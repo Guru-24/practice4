@@ -32,6 +32,12 @@ def save_tasks(self):
         self.tasks.append(Task(description))
         self.save_tasks()
         print("✅ Task added.")
+     def view_tasks(self):
+        if not self.tasks:
+            print("No tasks found.")
+        for idx, task in enumerate(self.tasks, start=1):
+            status = "✓" if task.completed else "✗"
+            print(f"{idx}. [{status}] {task.description}")
 
 def menu():
     manager = TaskManager()
