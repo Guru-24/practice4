@@ -24,4 +24,13 @@ class TaskManager:
                 data = json.load(file)
                 self.tasks = [Task.from_dict(d) for d in data]
 
+def save_tasks(self):
+        with open(TASKS_FILE, 'w') as file:
+            json.dump([task.to_dict() for task in self.tasks], file, indent=4)
+
+    def add_task(self, description):
+        self.tasks.append(Task(description))
+        self.save_tasks()
+        print("✅ Task added.")
+
 
