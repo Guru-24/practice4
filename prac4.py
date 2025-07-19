@@ -42,3 +42,32 @@ def menu():
         print("3. Mark Task as Completed")
         print("4. Delete Task")
         print("5. Exit")
+
+choice = input("Choose an option (1-5): ")
+        if choice == '1':
+            manager.view_tasks()
+        elif choice == '2':
+            desc = input("Enter task description: ")
+            manager.add_task(desc)
+        elif choice == '3':
+            manager.view_tasks()
+            try:
+                index = int(input("Task number to mark complete: ")) - 1
+                manager.complete_task(index)
+            except ValueError:
+                print("Invalid input.")
+        elif choice == '4':
+            manager.view_tasks()
+            try:
+                index = int(input("Task number to delete: ")) - 1
+                manager.delete_task(index)
+            except ValueError:
+                print("Invalid input.")
+        elif choice == '5':
+            print("👋 Exiting Task Manager.")
+            break
+        else:
+            print("❌ Invalid choice. Try again.")
+
+
+menu()
